@@ -1,25 +1,26 @@
 [gd_scene format=3 uid="uid://bhq11jkyh43sg"]
 
 [ext_resource type="PackedScene" uid="uid://1gvmwwgrab4f" path="res://Player/Player.tscn" id="1_ry1uq"]
+[ext_resource type="Script" uid="uid://rfgpfamedxi4" path="res://scene/main_scene.gd" id="1_x5n27"]
 [ext_resource type="Resource" uid="uid://dphr1igom345t" path="res://Resouse/player1_input.tres" id="2_fb1ex"]
 [ext_resource type="Resource" uid="uid://c47h4q53vo24b" path="res://Resouse/player2_input.tres" id="3_fb1ex"]
 [ext_resource type="Script" uid="uid://cdfmn2aj06e1l" path="res://scene/camera_manager.gd" id="4_4wnd8"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_oeckm"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wnd8"]
+albedo_color = Color(1, 0, 1, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wgwml"]
+[sub_resource type="BoxMesh" id="BoxMesh_4wnd8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x5n27"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jsie2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsie2"]
+albedo_color = Color(1, 0, 0, 1)
 
 [node name="MainScene" type="Node3D" unique_id=630407948]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1554007433]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1687004534]
-transform = Transform3D(31.014, 0, 0, 0, 0.527, 0, 0, 0, 31, 0, 0, 0)
-mesh = SubResource("BoxMesh_oeckm")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=752636859]
-transform = Transform3D(31.014004, 0, 0, 0, 0.52700007, 0, 0, 0, 31, 0, 0, 0)
-shape = SubResource("BoxShape3D_wgwml")
+script = ExtResource("1_x5n27")
 
 [node name="p1" parent="." unique_id=658033539 instance=ExtResource("1_ry1uq")]
 Data_input = ExtResource("2_fb1ex")
@@ -37,3 +38,64 @@ script = ExtResource("4_4wnd8")
 
 [node name="Camera3D" type="Camera3D" parent="Camera_manager" unique_id=1008174465]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3897362, 7.6773396)
+
+[node name="Map" type="Node3D" parent="." unique_id=697419546]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map" unique_id=442496455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7208138, -0.6354103, -4.8811836)
+use_collision = true
+size = Vector3(33.168526, 1, 48.879364)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map" unique_id=1594197865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3384075, 3.419033, -5.326889)
+use_collision = true
+size = Vector3(11.050083, 9.108887, 3.3735886)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map" unique_id=1756943835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.216991, 3.468274, -5.307234)
+use_collision = true
+size = Vector3(11.050083, 9.108887, 3.3735886)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map" unique_id=1958639295]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8581142, 3.468274, -5.307234)
+use_collision = true
+size = Vector3(11.050083, 9.108887, 3.3735886)
+material = SubResource("StandardMaterial3D_4wnd8")
+
+[node name="Plate A" type="Area3D" parent="." unique_id=1733845129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.712026, 0, 5.2412357)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plate A" unique_id=1118965674]
+mesh = SubResource("BoxMesh_4wnd8")
+surface_material_override/0 = SubResource("StandardMaterial3D_x5n27")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plate A" unique_id=1175488230]
+shape = SubResource("BoxShape3D_jsie2")
+
+[node name="Plate B" type="Area3D" parent="." unique_id=1240228972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.977214, 0, 5.2412357)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plate B" unique_id=2124283186]
+mesh = SubResource("BoxMesh_4wnd8")
+surface_material_override/0 = SubResource("StandardMaterial3D_x5n27")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plate B" unique_id=2140375699]
+shape = SubResource("BoxShape3D_jsie2")
+
+[node name="Goal" type="Area3D" parent="." unique_id=589225475]
+transform = Transform3D(19.656336, 0, 0, 0, 1, 0, 0, 0, 8.142317, 0.026863098, 0, -7.240172)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Goal" unique_id=1977419060]
+mesh = SubResource("BoxMesh_4wnd8")
+surface_material_override/0 = SubResource("StandardMaterial3D_jsie2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Goal" unique_id=344285457]
+shape = SubResource("BoxShape3D_jsie2")
+
+[connection signal="body_entered" from="Plate A" to="." method="_on_plate_a_body_entered"]
+[connection signal="body_exited" from="Plate A" to="." method="_on_plate_a_body_exited"]
+[connection signal="body_entered" from="Plate B" to="." method="_on_plate_b_body_entered"]
+[connection signal="body_exited" from="Plate B" to="." method="_on_plate_b_body_exited"]
+[connection signal="area_entered" from="Goal" to="." method="_on_goal_area_entered"]
+[connection signal="body_entered" from="Goal" to="." method="_on_goal_body_entered"]
+[connection signal="body_exited" from="Goal" to="." method="_on_goal_body_exited"]
