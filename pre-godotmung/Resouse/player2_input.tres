@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Data_input_player" format=3 uid="uid://c47h4q53vo24b"]
+
+[ext_resource type="Script" uid="uid://wfnog44kdoqr" path="res://Resouse/Inputplayer.gd" id="1_kotfe"]
+
+[resource]
+script = ExtResource("1_kotfe")
+move_f = "p2_mf"
+move_b = "p2_mb"
+move_r = "p2_mr"
+move_l = "p2_ml"

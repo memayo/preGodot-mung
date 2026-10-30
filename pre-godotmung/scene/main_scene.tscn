@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bhq11jkyh43sg"]
+
+[ext_resource type="PackedScene" uid="uid://1gvmwwgrab4f" path="res://Player/Player.tscn" id="1_ry1uq"]
+[ext_resource type="Resource" uid="uid://dphr1igom345t" path="res://Resouse/player1_input.tres" id="2_fb1ex"]
+[ext_resource type="Resource" uid="uid://c47h4q53vo24b" path="res://Resouse/player2_input.tres" id="3_fb1ex"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_oeckm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wgwml"]
+
+[node name="MainScene" type="Node3D" unique_id=630407948]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1554007433]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1687004534]
+transform = Transform3D(31.014, 0, 0, 0, 0.527, 0, 0, 0, 31, 0, 0, 0)
+mesh = SubResource("BoxMesh_oeckm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=752636859]
+transform = Transform3D(31.014004, 0, 0, 0, 0.52700007, 0, 0, 0, 31, 0, 0, 0)
+shape = SubResource("BoxShape3D_wgwml")
+
+[node name="p1" parent="." unique_id=658033539 instance=ExtResource("1_ry1uq")]
+Data_input = ExtResource("2_fb1ex")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=944054078]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.2017894, 0)
+metadata/_edit_lock_ = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1008174465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3897362, 7.6773396)
+
+[node name="p2" parent="." unique_id=703989364 instance=ExtResource("1_ry1uq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8112278, 1.3855798, -2.7037961)
+Data_input = ExtResource("3_fb1ex")
