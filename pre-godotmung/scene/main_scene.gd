@@ -14,9 +14,9 @@ func Check(P:String,value:bool):
 	if P1 and P2:
 		$Map/CSGBox3D4.visible = false
 		$Map/CSGBox3D4.use_collision = false
-	'else :
-		$Map/CSGBox3D4.visible = true
-		$Map/CSGBox3D4.use_collision = true'
+	#else :
+		#$Map/CSGBox3D4.visible = true
+		#$Map/CSGBox3D4.use_collision = true
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,7 +51,8 @@ func _on_goal_body_entered(body: Node3D) -> void:
 		player_in_area.append(body)
 		print(player_in_area)
 		if player_in_area.size() == 2:
-			print("win mung")
+			get_tree().paused = true
+			$CanvasLayer/Panel.visible = true
 
 
 
@@ -67,3 +68,8 @@ func _on_goal_body_exited(body: Node3D) -> void:
 
 func _on_goal_area_entered(area: Area3D) -> void:
 	print(area)
+
+
+func _on_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()
